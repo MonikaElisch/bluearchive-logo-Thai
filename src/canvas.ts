@@ -269,8 +269,19 @@ export default class LogoCanvas {
       this.textMetricsR!.width +
       (textBaseLine * (canvasHeight * this.scaleLevel) - this.textMetricsR!.fontBoundingBoxAscent) * horizontalTilt;
     //extend canvas
-    this.canvasWidthL = Math.max(this.textWidthL + (paddingX * this.scaleLevel), canvasWidth / 2);
-    this.canvasWidthR = Math.max(this.textWidthR + (paddingX * this.scaleLevel), canvasWidth / 2);
+    if (this.textWidthL + (paddingX * this.scaleLevel) > (canvasWidth * this.scaleLevel) / 2) {
+      this.canvasWidthL = this.textWidthL + (paddingX * this.scaleLevel);
+    } else {
+      this.canvasWidthL = (canvasWidth * this.scaleLevel) / 2;
+    }
+    if (this.textWidthR + (paddingX * this.scaleLevel) > (canvasWidth * this.scaleLevel) / 2) {
+      this.canvasWidthR = this.textWidthR + (paddingX * this.scaleLevel);
+    } else {
+      this.canvasWidthR = (canvasWidth * this.scaleLevel) / 2;
+    }
+    const gxr = document.querySelector('#graphX-range')! as HTMLInputElement;
+    gxr.min = (-Math.round(this.canvasWidthL / this.scaleLevel)).toString();
+    gxr.max = (Math.round(this.canvasWidthR / this.scaleLevel)).toString();
     this.canvas.width = this.canvasWidthL + this.canvasWidthR;
   }
   generateImg() {
