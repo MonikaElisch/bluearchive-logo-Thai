@@ -11,7 +11,7 @@ const {
   paddingX,
   hollowPath,
 } = settings;
-const font = `${fontSize}px RoGSanSrfStd-Bd, GlowSansSC-Normal-Heavy_diff, apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif`;
+const font = `${fontSize}px RoGSanSrfStd-Bd, GlowSansSC-Normal-Heavy_diff,NotoSansThai-Bold, apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif`;
 
 export default class LogoCanvas {
   public canvas: HTMLCanvasElement;
@@ -57,14 +57,14 @@ export default class LogoCanvas {
       c.lineWidth = 1;
       c.beginPath();
       c.moveTo(this.canvasWidthL, 0);
-      c.lineTo(this.canvasWidthL, this.canvas.height);
+      //c.lineTo(this.canvasWidthL, this.canvas.height);
       c.stroke();
       console.log(this.textMetricsL.width, this.textMetricsR.width);
       console.log(this.textWidthL, this.textWidthR);
       c.moveTo(this.canvasWidthL - this.textWidthL, 0);
-      c.lineTo(this.canvasWidthL - this.textWidthL, this.canvas.height);
+      //c.lineTo(this.canvasWidthL - this.textWidthL, this.canvas.height);
       c.moveTo(this.canvasWidthL + this.textWidthR, 0);
-      c.lineTo(this.canvasWidthL + this.textWidthR, this.canvas.height);
+      //c.lineTo(this.canvasWidthL + this.textWidthR, this.canvas.height);
       c.stroke();
     }
     //blue text -> halo -> black text -> cross
