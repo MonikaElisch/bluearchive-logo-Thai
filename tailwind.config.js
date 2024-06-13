@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [require('npm')],
+  plugins: [require('daisyui')],
   daisyui: {
     themes: [
       {
