@@ -10,6 +10,7 @@
   "font-title": "使用的字体",
   "main-font": "主要字体：",
   "fallback-font": "Fallback 字体：",
+  "thai-font": "泰语字体：",
   "glow": "未来荧黑",
   "github-repo": "GitHub 仓库"
 }
