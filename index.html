@@ -71,11 +71,11 @@
                 class="input input-bordered input-sm input-primary w-32" id="graphY" /></span>
           </div>
           <div class="flex items-center justify-evenly my-4">
-              <span class="flex items-center flex-1"><span class="mr-2">X</span><input type="range" min="-200" max="400"  value="-15"
-                  class="range w-32" id="graphX-range"/></span>
-              <span class="flex items-center flex-1"><span class="mr-2">Y</span><input type="range" min="-200" max="400"  value="0"
-                  class="range w-32" id="graphY-range"/></span>
-              <!-- -->
+            <span class="flex items-center flex-1"><span class="mr-2">X</span><input type="range" min="-200" max="400"
+                value="-15" class="range w-32" id="graphX-range" /></span>
+            <span class="flex items-center flex-1"><span class="mr-2">Y</span><input type="range" min="-200" max="400"
+                value="0" class="range w-32" id="graphY-range" /></span>
+            <!-- -->
           </div>
           <div class="flex items-center gap-2 my-4">
             <div class="i18n" data-i18n="subtitle-size">Sub Title Font Size</div>
@@ -85,18 +85,27 @@
           <div class="flex items-center gap-2">
             <div class="i18n" data-i18n="scale-level">Scale Level</div>
             <input type="number" placeholder="1" value="1" min="1" max="4"
-                class="input input-bordered input-sm input-primary w-32" id="scaleLevel" />
+              class="input input-bordered input-sm input-primary w-32" id="scaleLevel" />
             <div id="scale-level-label"></div>
           </div>
-          <div class="flex items-center gap-2 my-4">
-            <div class="i18n" data-i18n="subtitle">Sub Title</div>
-            <input id="subtitle" type="text" placeholder="Type here" value="ブルーアーカイブ"
-              class="input input-bordered input-sm input-primary w-50" />
+          <div class="flex items-center gap-2 my-2">
+            <div class="i18n" data-i18n="main-color">Main color</div>
+            <input type="color" value="#2B2B2B"
+              class="p-1 h-12 w-16 block bg-white cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none"
+              id="main-color" />
+            <label class="cursor-pointer label justify-start mx-2">
+              <input type="checkbox" class="toggle toggle-primary" id="main-color-dark-relative-mode" />
+              <span class="i18n label-text text-base ml-4 mr-16" data-i18n="main-color-dark-relative-mode">Invert in
+                dark
+                mode</span>
+            </label>
           </div>
           <div class="flex items-center gap-2 my-4">
             <div class="i18n" data-i18n="accent-color">Accent color</div>
-            <input type="color" value="#128AFA" class="p-1 h-12 w-16 block bg-white cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none"
+            <input type="color" value="#128AFA"
+              class="p-1 h-12 w-16 block bg-white cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none"
               id="accent-color" />
+            <button class="i18n btn btn-sm" id="reset-colors" data-i18n="reset-colors">Reset colors</button>
           </div>
         </div>
       </div>
@@ -130,8 +139,8 @@
         </li>
       </ul>
       <h2 class="i18n text-2xl font-bold leading-loose" data-i18n="github-repo">GitHub repo</h2>
-      <a href="https://github.com/nulla2011/Bluearchive-logo" target="_blank"
-        class="text-md">https://github.com/nulla2011/Bluearchive-logo</a>
+        <a href="https://github.com/nulla2011/Bluearchive-logo" target="_blank"
+          class="text-md">https://github.com/SL1900/bluearchive-logo</a>
     </section>
   </footer>
   <script type="module" src="/src/main.ts"></script>

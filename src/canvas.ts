@@ -1,6 +1,7 @@
 import debounce from 'lodash-es/debounce';
 import settings from './settings';
 import loadFont from './utils/loadFont';
+import { InvertColor } from './utils/invertColor';
 let {
   canvasHeight,
   canvasWidth,
@@ -31,9 +32,11 @@ export default class LogoCanvas {
   private textWidthST = 0;
   private graphOffset = graphOffset;
   private accentColor = '#128AFA';
+  private mainColor = '#2B2B2B';
   private transparentBg = false;
   private swapColors = false;
   private darkMode = false;
+  private mainRelativeToDarkMode = true;
   private drawSubtitle = false;
   private scaleLevel = 1;
   constructor() {
@@ -47,7 +50,7 @@ export default class LogoCanvas {
     return this.darkMode ? '#2B2B2B' : '#fff';
   }
   get textColor() {
-    return this.darkMode ? '#fff' : '#2B2B2B';
+      return this.darkMode && this.mainRelativeToDarkMode ? InvertColor(this.mainColor) : this.mainColor;
   }
   get primaryColor() {
     return this.swapColors ? this.textColor : this.accentColor;
@@ -197,33 +200,58 @@ export default class LogoCanvas {
           process(id, el);
         }, 300)
       );
+      console.log("sad")
     }
     document.querySelector('#save')!.addEventListener('click', () => this.saveImg());
     document.querySelector('#copy')!.addEventListener('click', () => this.copyImg());
     const tSwitch = document.querySelector('#transparent')! as HTMLInputElement;
+    tSwitch.checked = false;
     tSwitch.addEventListener('change', () => {
       this.transparentBg = tSwitch.checked;
       this.draw();
     });
     const sSwitch = document.querySelector("#sub-toggle")! as HTMLInputElement;
+    sSwitch.checked = false;
     sSwitch.addEventListener("change", () => {
         this.drawSubtitle = !this.drawSubtitle;
         this.draw();
     })
     const scSwitch = document.querySelector('#swap-colors')! as HTMLInputElement;
+    scSwitch.checked = false;
     scSwitch.addEventListener('change', () => {
       this.swapColors = scSwitch.checked;
       this.draw();
     });
+    const mcrSwitch = document.querySelector('#main-color-dark-relative-mode')! as HTMLInputElement;
+    mcrSwitch.checked = true;
+    mcrSwitch.addEventListener('change', () => {
+      this.mainRelativeToDarkMode = mcrSwitch.checked;
+      this.draw();
+    });
     const dSwitch = document.querySelector('#dark-mode')! as HTMLInputElement;
+    dSwitch.checked = false;
     dSwitch.addEventListener('change', () => {
       this.darkMode = dSwitch.checked;
       this.draw();
     });
     const accentColorInput = document.querySelector('#accent-color')! as HTMLInputElement;
+    accentColorInput.value = this.accentColor;
     accentColorInput.addEventListener('input', () => {
       this.accentColor = accentColorInput.value;
       this.draw();
+    });
+    const mainColorInput = document.querySelector('#main-color')! as HTMLInputElement;
+    mainColorInput.value = this.mainColor;
+    mainColorInput.addEventListener('input', () => {
+      this.mainColor = mainColorInput.value;
+      this.draw();
+    });
+    document.querySelector('#reset-colors')!.addEventListener('click', () => {
+        accentColorInput.value = "#128AFA";
+        this.accentColor = "#128AFA";
+        mainColorInput.value = "#2B2B2B";
+        this.mainColor = "#2B2B2B";
+        this.draw();
     });
     const gx = document.querySelector('#graphX')! as HTMLInputElement;
     const gxr = document.querySelector('#graphX-range')! as HTMLInputElement;
@@ -330,5 +358,10 @@ export default class LogoCanvas {
         setTimeout(() => (msg.checked = false), 2000);
       })
       .catch((e) => console.error("can't copy", e));
+  }
+  resetColor() {
+      this.mainColor = "#2B2B2B";
+      this.accentColor = "#128AFA";
+      this.draw();
   }
 }

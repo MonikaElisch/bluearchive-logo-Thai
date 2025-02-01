@@ -19,5 +19,8 @@
   "github-repo": "GitHub repo",
   "subtitle": "Subtitle",
   "subtitle-toggle": "Toggle subtitle",
-  "subtitle-size": "Subtitle Font Size"
+  "subtitle-size": "Subtitle Font Size",
+  "main-color": "Main color",
+  "main-color-dark-relative-mode": "Invert in dark mode",
+  "reset-colors": "Reset colors"
 }
