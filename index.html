@@ -27,11 +27,11 @@
   <section class="w-full mx-auto my-6 flex flex-col sm:w-[32rem]">
     <div class="flex justify-center my-4 px-2">
       <input id="textL" type="text" placeholder="Type here" value="ブルー"
-        class="input input-bordered input-md input-primary mr-1 w-40 max-w-[14rem] flex-1" />
+        class="input input-bordered input-md input-primary mr-1  w-40 max-w-[10rem] max-[520px]:w-full max-[350px]:max-w-[14rem]" />
       <input id="textR" type="text" placeholder="Type here" value="アーカイブ"
-        class="input input-bordered input-md input-secondary ml-1 w-40 max-w-[14rem] flex-1" />
+        class="input input-bordered input-md input-secondary ml-1  w-40 max-w-[10rem] max-[520px]:w-full max-[350px]:max-w-[14rem]" />
       <input id="subtitle" type="text" placeholder="Type here" value="BlueArchive"
-        class="input input-bordered input-md input-secondary ml-1 w-40 max-w-[14rem] flex-1" />
+        class="input input-bordered input-md input-secondary ml-1 w-40 max-w-[10rem] max-[520px]:w-full max-[350px]:max-w-[14rem]" />
     </div>
     <div class="my-2">
       <label class="cursor-pointer label justify-start mx-10">
@@ -69,7 +69,7 @@
           <div class="flex items-center gap-2 my-4">
             <div class="i18n" data-i18n="subtitle-size">Sub Title Font Size</div>
             <input id="subtitleSize" type="number" placeholder="Type here" value="36"
-              class="input input-bordered input-sm input-primary w-50" />
+              class="input input-bordered input-sm input-primary w-32" />
           </div>
           <div class="flex items-center gap-2">
             <div class="i18n" data-i18n="scale-level">Scale Level</div>
@@ -78,7 +78,7 @@
           </div>
           <div class="flex items-center gap-2 my-4">
             <div class="i18n" data-i18n="accent-color">Accent color</div>
-            <input type="color" value="#128AFA" class="input input-bordered input-sm input-primary w-32"
+            <input type="color" value="#128AFA" class="p-1 h-12 w-16 block bg-white cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none"
               id="accent-color" />
           </div>
         </div>
