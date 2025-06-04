@@ -7,7 +7,7 @@
   "transparent-background": "Transparent Background",
   "swap-colors": "Swap Colors",
   "dark-mode": "Dark Mode",
-  "advance": "Advance settings",
+  "advance": "Advanced settings",
   "halo-cross": "Halo & Cross position",
   "accent-color": "Accent color",
   "scale-level": "Scale Level",
@@ -18,5 +18,6 @@
   "glow": "Wêlai Glow Sans",
   "github-repo": "GitHub repo",
   "subtitle": "Subtitle",
+  "subtitle-toggle": "Toggle subtitle",
   "subtitle-size": "Subtitle Font Size"
 }

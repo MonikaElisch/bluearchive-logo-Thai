@@ -34,6 +34,7 @@ export default class LogoCanvas {
   private transparentBg = false;
   private swapColors = false;
   private darkMode = false;
+  private drawSubtitle = false;
   private scaleLevel = 1;
   constructor() {
     this.canvas = document.querySelector('#canvas')!;
@@ -118,11 +119,13 @@ export default class LogoCanvas {
     c.globalCompositeOperation = 'source-over';
     c.fillText(this.textR, this.canvasWidthL, this.canvas.height * textBaseLine);
     c.resetTransform();
-    c.font = subtitleFont;
-    c.setTransform(1, 0, horizontalTilt, 1, 0, 0);
-    c.textAlign = 'end';
-    c.fillText(this.subtitle, this.canvasWidthL + this.textWidthR + subtitleFontSize, this.canvas.height * textBaseLine + subtitleFontSize + 5);
-    c.resetTransform();
+    if(this.drawSubtitle) {
+        c.font = `${subtitleFont.replace(/\d+px/gi, subtitleFontSize * this.scaleLevel + "px")}`;
+        c.setTransform(1, 0, horizontalTilt * 1, 1, 0, 0);
+        c.textAlign = 'end';
+        c.fillText(this.subtitle, this.canvasWidthL + this.textWidthR + subtitleFontSize * this.scaleLevel, this.canvas.height * textBaseLine + subtitleFontSize * this.scaleLevel + 5);
+        c.resetTransform();
+    }
     const graph = {
       X: this.canvasWidthL - this.canvas.height / 2 + (graphOffset.X * this.scaleLevel),
       Y: this.graphOffset.Y * this.scaleLevel,
@@ -202,6 +205,11 @@ export default class LogoCanvas {
       this.transparentBg = tSwitch.checked;
       this.draw();
     });
+    const sSwitch = document.querySelector("#sub-toggle")! as HTMLInputElement;
+    sSwitch.addEventListener("change", () => {
+        this.drawSubtitle = !this.drawSubtitle;
+        this.draw();
+    })
     const scSwitch = document.querySelector('#swap-colors')! as HTMLInputElement;
     scSwitch.addEventListener('change', () => {
       this.swapColors = scSwitch.checked;
@@ -247,10 +255,6 @@ export default class LogoCanvas {
   }
   generateImg() {
     let outputCanvas: HTMLCanvasElement;
-    if (
-      this.textWidthL + paddingX < canvasWidth / 2 ||
-      this.textWidthR + paddingX < canvasWidth / 2
-    ) {
       outputCanvas = document.createElement('canvas');
       outputCanvas.width = this.textWidthL + this.textWidthR + (paddingX * this.scaleLevel) * 2;
       outputCanvas.height = this.canvas.height;
@@ -266,9 +270,6 @@ export default class LogoCanvas {
         outputCanvas.width,
         outputCanvas.height,
       );
-    } else {
-      outputCanvas = this.canvas;
-    }
     return new Promise<Blob>((resolve, reject) => {
       outputCanvas.toBlob((blob) => blob ? resolve(blob) : reject());
     });

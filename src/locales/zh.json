@@ -5,8 +5,11 @@
   "copy": "复制",
   "copy-success": "图片已成功复制",
   "transparent-background": "透明背景",
+  "dark-mode": "夜间模式",
+  "swap-colors": "交换颜色",
   "advance": "高级设置",
   "halo-cross": "光环位置微调",
+  "accent-color": "强调色",
   "scale-level": "缩放等级",
   "font-title": "使用的字体",
   "main-font": "主要字体：",
@@ -15,5 +18,6 @@
   "glow": "未来荧黑",
   "github-repo": "GitHub 仓库",
   "subtitle": "副标题",
+  "subtitle-toggle": "切换字幕",
   "subtitle-size": "副标题字号"
 }
