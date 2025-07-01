@@ -292,7 +292,7 @@ export default class LogoCanvas {
 
       let width = Math.floor(this.textWidthL + this.textWidthR + paddingX * this.scaleLevel * 2);
       let height = this.canvas.height;
-      scaleLabel.textContent = `${width}px x ${height}px`;
+      scaleLabel.textContent = `${width} x ${height} px`;
     });
     scaleInput.dispatchEvent(new Event("input"));
   }
