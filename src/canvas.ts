@@ -317,13 +317,17 @@ export default class LogoCanvas {
   }
   generateImg() {
     let outputCanvas: HTMLCanvasElement;
+    if (
+      this.textWidthL + (paddingX * this.scaleLevel) < (canvasWidth * this.scaleLevel) / 2 ||
+      this.textWidthR + (paddingX * this.scaleLevel) < (canvasWidth * this.scaleLevel) / 2
+    ) {
       outputCanvas = document.createElement('canvas');
       outputCanvas.width = this.textWidthL + this.textWidthR + (paddingX * this.scaleLevel) * 2;
       outputCanvas.height = this.canvas.height;
       const ctx = outputCanvas.getContext('2d')!;
       ctx.drawImage(
         this.canvas,
-        canvasWidth / 2 - this.textWidthL - paddingX,
+        (canvasWidth * this.scaleLevel) / 2 - this.textWidthL - (paddingX * this.scaleLevel),
         0,
         outputCanvas.width,
         outputCanvas.height,
@@ -332,6 +336,9 @@ export default class LogoCanvas {
         outputCanvas.width,
         outputCanvas.height,
       );
+    } else {
+      outputCanvas = this.canvas;
+    }
     return new Promise<Blob>((resolve, reject) => {
       outputCanvas.toBlob((blob) => blob ? resolve(blob) : reject());
     });
